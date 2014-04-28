@@ -9,7 +9,7 @@
 
 <body>
 	<h:form>
-		<h:outputText value="User:" />
+		<h:outputLabel for="name" value="User:" />
 		<h:inputText id="name" value="#{user.name}" />
 		<h:commandButton id="login" value="Login" action="/main.xhtml" />
 	</h:form>

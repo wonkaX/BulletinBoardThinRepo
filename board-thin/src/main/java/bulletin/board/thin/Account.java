@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @ManagedBean
 @SessionScoped
-public class User {
+public class Account {
 
 	@Getter
 	@Setter

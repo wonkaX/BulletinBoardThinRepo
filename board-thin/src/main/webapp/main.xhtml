@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DD XHTML 1.0 Transitional//EN" 
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <head>
-	<title>BulletinBoard - Main Page</title>
+<title>BulletinBoard - Main Page</title>
 </head>
 
 <body>
@@ -12,14 +13,26 @@
 
 		<h:outputText value="You are #{user.name}" />
 
+		<h:dataTable value="#{main.board.noticeList}" var="n">
+			<h:column>
+				<h:outputText value="#{n.item.name}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{n.amount}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{n.pricePerItem}" />
+			</h:column>
+		</h:dataTable>
+
 		<h:panelGrid id="grid" columns="2">
 			<h:outputLabel for="item" value="Item: " />
-			<h:inputText id="item" value="#{notice.item}" />
+			<h:inputText id="item" value="#{main.tempItem}" />
 			<h:outputLabel for="amont" value="Amount: " />
-			<h:inputText id="amount" value="#{notice.amount}" />
+			<h:inputText id="amount" value="#{main.tempAmount}" />
 			<h:outputLabel for="pricePerItem" value="Price per Item: " />
-			<h:inputText id="pricePerItem" value="#{notice.pricePerItem}" />
-			<h:commandButton id="add" value="Add" action="#{notice.addToList}" />
+			<h:inputText id="pricePerItem" value="#{main.tempPricePerItem}" />
+			<h:commandButton id="add" value="Add" action="#{main.addToList}" />
 		</h:panelGrid>
 
 	</h:form>

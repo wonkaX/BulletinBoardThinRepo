@@ -11,9 +11,12 @@
 <body>
 	<h:form>
 
-		<h:outputText value="You are #{user.name}" />
+		<h:outputText value="You are #{account.name}" />
 
 		<h:dataTable value="#{main.board.noticeList}" var="n">
+			<h:column>
+				<h:outputText value="#{n.user.name}" />
+			</h:column>
 			<h:column>
 				<h:outputText value="#{n.item.name}" />
 			</h:column>
@@ -27,13 +30,18 @@
 
 		<h:panelGrid id="grid" columns="2">
 			<h:outputLabel for="item" value="Item: " />
-			<h:inputText id="item" value="#{main.tempItem}" />
+			<h:selectOneMenu id="itemMenu" value="#{notice.itemId}" >
+				<f:selectItem id="noItem" itemLabel="-- Item auswählen --" itemValue="0" />
+				<f:selectItems value="#{main.itemList}" var="itm" itemLabel="#{itm.name}" itemValue="#{itm.id}" />
+			</h:selectOneMenu>						
 			<h:outputLabel for="amont" value="Amount: " />
-			<h:inputText id="amount" value="#{main.tempAmount}" />
+			<h:inputText id="amount" value="#{notice.tempAmount}" />
 			<h:outputLabel for="pricePerItem" value="Price per Item: " />
-			<h:inputText id="pricePerItem" value="#{main.tempPricePerItem}" />
-			<h:commandButton id="add" value="Add" action="#{main.addToList}" />
+			<h:inputText id="pricePerItem" value="#{notice.tempPricePerItem}" />
+			<h:commandButton id="add" value="Add" action="#{notice.addToList}" />
 		</h:panelGrid>
+		
+		<h:commandButton id="refresh" value="Refresh" action="/main.xhtml" />
 
 	</h:form>
 </body>

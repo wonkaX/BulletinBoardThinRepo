@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DD XHTML 1.0 Transitional//EN" 
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <head>
 	<title>BulletinBoard - Login</title>
@@ -9,9 +10,12 @@
 
 <body>
 	<h:form>
-		<h:outputLabel for="name" value="User:" />
-		<h:inputText id="name" value="#{user.name}" />
-		<h:commandButton id="login" value="Login" action="/main.xhtml" />
+		<h:outputLabel for="name" value="User:" />			
+		<h:selectOneMenu id="userMenu" value="#{account.id}" >
+			<f:selectItem id="noUser" itemLabel="-- User auswählen --" itemValue="0" />
+			<f:selectItems value="#{main.userList}" var="usr" itemLabel="#{usr.name}" itemValue="#{usr.id}" />
+		</h:selectOneMenu>
+		<h:commandButton id="login" value="Login" action="#{account.login}" />
 	</h:form>
 </body>
 

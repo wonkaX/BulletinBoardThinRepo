@@ -9,7 +9,7 @@ import bulletin.board.core.system.NoticeType;
 import lombok.Getter;
 import lombok.Setter;
 
-@ManagedBean(name = "notice")
+@ManagedBean
 @ViewScoped
 public class NoticeBean {
 	

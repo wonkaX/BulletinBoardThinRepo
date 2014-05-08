@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+
+.userinfo {
+	font-size: 1.5em;
+}
+
+table.realtable {
+	border: 1px solid black;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+th.realtable_header {
+	background-color: silver;
+	padding: 3px;
+}
+
+tr.realtable_oddrow {
+	background-color: aqua;
+}
+
+tr.realtable_evenrow {
+	background-color: lime;
+}
+
+td {
+	padding: 3px;
+}

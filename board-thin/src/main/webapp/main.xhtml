@@ -6,41 +6,56 @@
 
 <head>
 <title>BulletinBoard - Main Page</title>
+<link type="text/css" rel="stylesheet" href="styles/main.css"></link>
 </head>
 
 <body>
 	<h:form>
 
-		<h:outputText value="You are #{account.name}" />
+		<h:outputText value="You are #{account.name}" styleClass="userinfo" />
 
-		<h:dataTable value="#{main.board.noticeList}" var="n">
+		<h:dataTable value="#{main.board.noticeList}" var="n"
+			styleClass="realtable"  headerClass="realtable_header"
+			rowClasses="realtable_oddrow,realtable_evenrow">
+
 			<h:column>
+				<f:facet name="header">User</f:facet>
 				<h:outputText value="#{n.user.name}" />
 			</h:column>
+
 			<h:column>
+				<f:facet name="header">Item</f:facet>
 				<h:outputText value="#{n.item.name}" />
 			</h:column>
+
 			<h:column>
+				<f:facet name="header">Amount</f:facet>
 				<h:outputText value="#{n.amount}" />
 			</h:column>
+
 			<h:column>
+				<f:facet name="header">Price per Item</f:facet>
 				<h:outputText value="#{n.pricePerItem}" />
 			</h:column>
+
 		</h:dataTable>
 
 		<h:panelGrid id="grid" columns="2">
 			<h:outputLabel for="item" value="Item: " />
-			<h:selectOneMenu id="itemMenu" value="#{notice.itemId}" >
-				<f:selectItem id="noItem" itemLabel="-- Item auswählen --" itemValue="0" />
-				<f:selectItems value="#{main.itemList}" var="itm" itemLabel="#{itm.name}" itemValue="#{itm.id}" />
-			</h:selectOneMenu>						
+			<h:selectOneMenu id="itemMenu" value="#{noticeBean.itemId}">
+				<f:selectItem id="noItem" itemLabel="-- Item auswählen --"
+					itemValue="0" />
+				<f:selectItems value="#{main.itemList}" var="itm"
+					itemLabel="#{itm.name}" itemValue="#{itm.id}" />
+			</h:selectOneMenu>
 			<h:outputLabel for="amont" value="Amount: " />
-			<h:inputText id="amount" value="#{notice.tempAmount}" />
+			<h:inputText id="amount" value="#{noticeBean.tempAmount}" />
 			<h:outputLabel for="pricePerItem" value="Price per Item: " />
-			<h:inputText id="pricePerItem" value="#{notice.tempPricePerItem}" />
-			<h:commandButton id="add" value="Add" action="#{notice.addToList}" />
+			<h:inputText id="pricePerItem" value="#{noticeBean.tempPricePerItem}" />
+			<h:commandButton id="add" value="Add"
+				action="#{noticeBean.addToList}" />
 		</h:panelGrid>
-		
+
 		<h:commandButton id="refresh" value="Refresh" action="/main.xhtml" />
 
 	</h:form>
